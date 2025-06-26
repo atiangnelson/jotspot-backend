@@ -5,3 +5,4 @@ from flask_restful import Api
 from flask_cors import CORS
 from sqlalchemy import MetaData
 from flask_jwt_extended import JWTManager
+
