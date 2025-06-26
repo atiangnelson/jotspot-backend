@@ -10,6 +10,12 @@ with app.app_context():
     db.session.add(user)
     db.session.commit()
 
+    note = Note(title='Welcome', content='This is your first note!', tags='welcome,first', user_id=user.id)
+    db.session.add(note)
+    db.session.commit()
+    
+
+
 
 
 
