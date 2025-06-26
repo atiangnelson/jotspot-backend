@@ -49,3 +49,21 @@ class NoteById(Resource):
         note.tags = data.get('tags', '')
         db.session.commit()
         return note.to_dict(), 200
+    @jwt_required()
+    def delete(self, id):
+        user_id = get_jwt_identity()
+        note = Note.query.filter_by(id=id, user_id=user_id).first_or_404()
+        db.session.delete(note)
+        db.session.commit()
+        return {}, 204
+api.add_resource(Register, '/register')
+api.add_resource(Login, '/login')
+api.add_resource(Notes, '/notes')
+api.add_resource(NoteById, '/notes/<int:id>')
+
+@app.route('/')
+def index():
+    return '<h1>JotSpot Flask API Running</h1>'
+
+if __name__ == '__main__':
+    app.run(port=5555, debug=True)
