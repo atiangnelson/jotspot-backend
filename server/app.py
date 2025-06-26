@@ -22,3 +22,30 @@ class Login(Resource):
             token = create_access_token(identity=user.id)
             return {'access_token': token}, 200
         return {'message': 'Invalid credentials'}, 401
+class Notes(Resource):
+    @jwt_required()
+    def get(self):
+        user_id = get_jwt_identity()
+        notes = Note.query.filter_by(user_id=user_id).all()
+        return [n.to_dict() for n in notes], 200
+
+    @jwt_required()
+    def post(self):
+        user_id = get_jwt_identity()
+        data = request.get_json()
+        note = Note(title=data['title'], content=data['content'], tags=data.get('tags', ''), user_id=user_id)
+        db.session.add(note)
+        db.session.commit()
+        return note.to_dict(), 201
+
+class NoteById(Resource):
+    @jwt_required()
+    def put(self, id):
+        user_id = get_jwt_identity()
+        note = Note.query.filter_by(id=id, user_id=user_id).first_or_404()
+        data = request.get_json()
+        note.title = data['title']
+        note.content = data['content']
+        note.tags = data.get('tags', '')
+        db.session.commit()
+        return note.to_dict(), 200
