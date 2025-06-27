@@ -11,3 +11,8 @@ class User(db.Model,SerializerMixin):
 
     notes=db.relationship('Note', backref='user',lazy=True)
 
+    def set_password(self,password):
+        self.password_hash=generate_password_hash(password)
+
+        
+
