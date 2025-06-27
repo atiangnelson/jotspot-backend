@@ -20,7 +20,7 @@ class User(db.Model,SerializerMixin):
     serialize_rules = ('-password_hash','-notes.user',)    
 
 
- class Note(db.Model,SerializerMixin):
+class Note(db.Model,SerializerMixin):
     __tablename__ = 'notes'
 
     id = db.Column(db.Integer,primary_key=True)
