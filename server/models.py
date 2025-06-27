@@ -21,16 +21,16 @@ class User(db.Model,SerializerMixin):
 
 
  class Note(db.Model,SerializerMixin):
-    __tablename_ = 'notes'
+    __tablename__ = 'notes'
 
-    id = db.Columm(db.Integer,primary_key=True)
+    id = db.Column(db.Integer,primary_key=True)
     title=db.Column(db.String,nullable=False)
     content=db.Column(db.Text,nullable=False)
     tags=db.Column(db.String)
 
-    user_id=db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
+    user_id=db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
 
-    serialize_rules=('-user')       
+    serialize_rules=('-user',)       
 
         
 
