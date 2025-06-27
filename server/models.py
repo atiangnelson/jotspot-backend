@@ -17,7 +17,20 @@ class User(db.Model,SerializerMixin):
     def check_password(self,password):
         return check_password_hash(self.password_hash,password)
 
-    serialize_rules = ('-password_hash','-notes.user',)        
+    serialize_rules = ('-password_hash','-notes.user',)    
+
+
+ class Note(db.Model,SerializerMixin):
+    __tablename_ = 'notes'
+
+    id = db.Columm(db.Integer,primary_key=True)
+    title=db.Column(db.String,nullable=False)
+    content=db.Column(db.Text,nullable=False)
+    tags=db.Column(db.String)
+
+    user_id=db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
+
+    serialize_rules=('-user')       
 
         
 
