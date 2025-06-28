@@ -8,3 +8,14 @@ This is the backend API for **jotspot**, a simple note-taking app built with fla
     - CORS enabled for frontend integration
     - Password hashing for security purpose 
     - Tags support for notes 
+
+# Technologies used 
+ - python 3.x
+ - Flask 
+ - Fask-RESTful 
+ - Flask-JWT-Extended 
+ - Flask-Migrate 
+ - Falsk-CORS
+ - SQLAlchemy 
+ - SQLite
+ 
