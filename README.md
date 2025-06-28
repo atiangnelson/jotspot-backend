@@ -37,4 +37,11 @@ cd server
 
   **start the server**
   python app.py
+
+
+  # API  Endpoints 
+  GET  '/notes'  --get all notes for user 
+  POST '/notes'  --create a new note
+  PUT  '/notes/<id>' --update an existing note 
+  DELETE '/notes/<id>' --delete an existing note 
   
