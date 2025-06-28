@@ -18,4 +18,23 @@ This is the backend API for **jotspot**, a simple note-taking app built with fla
  - Falsk-CORS
  - SQLAlchemy 
  - SQLite
- 
+
+ # installation and setup 
+ **Clone the repository**
+ ** git clone <repo-url>
+cd server 
+
+**create a virtual environment**
+ python3 -m venv venv
+
+ **run database migrations**
+  - flask db init 
+  - flask db migrate -m "initial migration"
+  - flask db upgrade 
+
+  **seed the database**
+  python seed.py 
+
+  **start the server**
+  python app.py
+  
