@@ -44,4 +44,7 @@ cd server
   POST '/notes'  --create a new note
   PUT  '/notes/<id>' --update an existing note 
   DELETE '/notes/<id>' --delete an existing note 
-  
+
+
+  # JWT Authentication 
+After login, include the token in the 'Authorization' header for protected routes 
