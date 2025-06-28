@@ -1,0 +1,1 @@
+This is the backend API for **jotspot**, a simple note-taking app built with flask. It supports user registration, login with JWT authentication, and CRUD operations on personal note.
